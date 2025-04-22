@@ -19,11 +19,15 @@ G.add_edges_from(edges)
 # Раскраска
 coloring = greedy_coloring(G)
 
-# Отображаем граф
-node_colors = ['blue', 'green', 'green', 'red',]
-pos = nx.spring_layout(G)
+# Цветовая палитра
+color_map = ['red', 'green', 'blue', 'orange', 'purple', 'cyan']
 
+# Генерация цветов для узлов
+node_colors = [color_map[coloring[node]] for node in G.nodes()]
+
+# Отображаем граф
+pos = nx.spring_layout(G)
 plt.figure(figsize=(6, 4))
 nx.draw(G, pos, with_labels=True, node_color=node_colors, node_size=1000)
-plt.title("Graph Coloring")
+plt.title("Graph Coloring (Greedy Algorithm)")
 plt.show()
